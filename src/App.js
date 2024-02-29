@@ -13,7 +13,7 @@ function App() {
 
   const fetchData = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/getAllData');
+      const response = await axios.get('http://localhost:5001/fetchData');
 
       // Update the state with the fetched data
       setSubmittedData(response.data);
@@ -26,7 +26,7 @@ function App() {
 
   const handleSubmit = async () => {
     try {
-      const response = await axios.post('http://localhost:5000/submitData', {
+      const response = await axios.post('http://localhost:5001/submitData', {
         name: name,
         password: password,
       });
