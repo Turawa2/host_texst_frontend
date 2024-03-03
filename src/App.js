@@ -10,10 +10,11 @@ function App() {
     // Load submitted data from the server on component mount
     fetchData();
   }, []);
-
+  const apiUrl = process.env.REACT_APP_API_URL; // Assuming REACT_APP_API_URL is the environment variable
+  // const response = await axios.get(apiUrl + '/fetchData');
   const fetchData = async () => {
     try {
-      const response = await axios.get('http://localhost:5001/fetchData');
+      const response = await axios.get(`${apiUrl}/fetchData`);
 
       // Update the state with the fetched data
       setSubmittedData(response.data);
@@ -26,7 +27,7 @@ function App() {
 
   const handleSubmit = async () => {
     try {
-      const response = await axios.post('http://localhost:5001/submitData', {
+      const response = await axios.post(`${apiUrl}/submitData`, {
         name: name,
         password: password,
       });
